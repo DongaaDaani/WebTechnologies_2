@@ -1,0 +1,97 @@
+<mat-card> <mat-card-title align="center">New Car</mat-card-title>
+
+    <form [formGroup]="carFormGroup">
+
+        <div class="row">
+
+            <mat-form-field appearance="fill" class="col-lg-8">
+                <mat-label>Car Brand</mat-label>
+
+                <input type="text" matInput formControlName="brand">
+            </mat-form-field>
+
+            <div *ngIf="carFormGroup.controls.brand.touched === true">
+                <mat-error *ngIf="carFormGroup.controls.brand.hasError('required')">
+                    This field is required
+                </mat-error>
+
+                <mat-error *ngIf="carFormGroup.controls.brand.hasError('maxlength')">
+                    The specified length can be up to 20 characters.
+                    
+                </mat-error>
+            </div>
+            <mat-form-field appearance="fill" class="col-lg-8">
+
+                <mat-label>Car type</mat-label>
+                <input type="text" matInput formControlName="type">
+
+            </mat-form-field>
+
+            <div *ngIf="carFormGroup.controls.type.touched === true">
+
+                <mat-error *ngIf="carFormGroup.controls.type.hasError('required')">
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="carFormGroup.controls.type.hasError('maxlength')">
+                    The specified length can be up to 20 characters.
+                </mat-error>
+            </div>
+            <mat-form-field appearance="fill" class="col-lg-8">
+                <mat-label>Consumption (100km/L)</mat-label>
+                <input type="text" matInput formControlName="consumption">
+            </mat-form-field>
+
+            <div *ngIf="carFormGroup.controls.consumption.touched === true">
+                <mat-error *ngIf="carFormGroup.controls.consumption.hasError('required')">
+
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="carFormGroup.controls.consumption.hasError('maxlength')">
+                    The specified length can be up to 20 characters.
+                </mat-error>
+            </div>
+            <mat-form-field class="example-full-width" appearance="fill" class="col-lg-8">
+                <mat-label>Production date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+
+                <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+            <div *ngIf="carFormGroup.controls.date.touched === true">
+                <mat-error *ngIf="carFormGroup.controls.date.hasError('required')">
+
+                    This field is required
+                </mat-error>
+                <mat-error *ngIf="carFormGroup.controls.date.hasError('maxlength')">
+                    The specified length can be up to 20 characters.
+                </mat-error>
+            </div>
+            <mat-form-field appearance="fill" class="col-lg-8">
+                <mat-label>Price</mat-label>
+
+                <input type="number" matInput formControlName="price">
+            </mat-form-field>
+            <div *ngIf="carFormGroup.controls.price.touched === true">
+                <mat-error *ngIf="carFormGroup.controls.price.hasError('required')">
+                    This field is required
+                </mat-error>
+            </div>
+            <mat-form-field appearance="fill" class="col-lg-8">
+                <mat-label>quantity</mat-label>
+                <input type="number" matInput formControlName="quantity">
+            </mat-form-field>
+
+            <div *ngIf="carFormGroup.controls.quantity.touched === true">
+                <mat-error *ngIf="carFormGroup.controls.quantity.hasError('required')">
+                    This field is required
+                </mat-error>
+            </div>
+        </div>
+        <div>
+            <button mat-raised-button matDialogClose>Back</button>
+
+            <button color="primary" [disabled]="!carFormGroup.valid" (click)="createProduct()" mat-raised-button
+                matDialogClose>Add</button>
+        </div>
+    </form>
+</mat-card>

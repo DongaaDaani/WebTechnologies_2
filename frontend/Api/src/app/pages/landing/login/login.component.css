@@ -1,0 +1,11 @@
+.content {
+    text-align: center;
+}
+.navbar {
+    overflow: hidden;
+    position: fixed; 
+    top: 0; 
+    width: 100%;
+    background-color: #effc00;
+    z-index: 9999;
+}
